@@ -1,0 +1,150 @@
+html,body{
+	width: 100%;
+	height: 100%;
+}
+body{
+	background: #BC986A;
+}
+
+* {
+	font-family: 'PT Serif', serif;
+}
+nav {
+	background-color: #DAAD86;
+}
+.img-logo {
+	height: 50px;
+	width: 60px;
+}
+.navbar-brand{
+	margin-right: 2rem !important;
+}
+.navbar-nav a{
+	transition: 0.5s;
+}
+.navbar-nav a:hover{
+	text-decoration-color: red;
+	color: red;
+}
+@media (max-width: 768px){
+	.nav-right{
+		margin-left: 0;
+		
+	}
+	.navbar-nav span a:nth-last-of-type(2){
+		padding-bottom: 8px;
+		border-bottom: 1px solid brown;
+	}
+	.main{
+		max-height: 500px;
+	}
+	.main{
+		min-height: 300px;
+		max-height: 400px;
+	}
+}
+@media (min-width: 768px){
+	.nav-right.last{
+		margin-left: 30px;
+		padding-left: 5px;
+		border-left: brown solid 2px;
+	}
+	.nav-right {
+		margin-left: 20px;
+	}
+	.wrap-up {
+		display: flex;
+		width: 100%;
+		flex-direction: row;
+		justify-content: flex-end;
+
+	}
+	.row div h1{
+		font-size: 5rem;
+		
+	}
+	.row div h3{
+		font-size: 3rem;
+	}
+	.main{
+		height: 40%;
+		min-height: 400px;
+		max-height: 450px;
+	}
+
+}
+.main {
+	margin-top: 70px;
+	background: url("homeWallpaper.jpg");
+	background-size: cover;
+	background-position: 50% 25%;
+	background-repeat: no-repeat;
+	width: 100%;
+	padding-top: 4.5rem;
+	padding-bottom: 2rem;
+	text-align: center;
+	box-shadow: #8a4008 0px 5px 10px;
+}
+@media (max-width:960px ){
+	
+}
+.main.container{
+
+	position: absolute;
+
+
+}
+.row div h1,.row div h3{
+	color:#DAAD86;
+	
+}
+.row div h1{
+	margin: 0 auto 0 auto;
+	border-bottom: 2px #BC986A solid;
+	border-radius: 1px
+}
+#playButton {
+	background: #FBEEC1;
+	border-color: #FBEEC1;
+}
+#playButton:hover{
+	background: #8D8741;
+	border-color: #8D8741;
+	color: white;
+}
+.load{
+	display: none;
+}
+section {
+	height: 100%;
+	width: 100%;
+}
+.still-load{
+	width: 100%;
+	height: 100%;
+}
+.outer{
+	width: 250px;
+	height: 250px;
+	border-radius: 50px;
+	border: 20px #8D8741 groove;
+}
+.inner{
+	width: 150px;
+	height: 150px;
+	border-radius: 25px;
+	border: 20px #FBEEC1 groove;
+}
+.point{
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	background: #DAAD86;
+}
+#root {
+width: 100%;
+height: 100%;
+}
+.navbar-toggler:focus{
+	outline: 0 !important;
+}
