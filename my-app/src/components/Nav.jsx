@@ -5,13 +5,41 @@ import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Container } from 'react
 import $ from 'jquery';
 
 class Bar extends Component {
-    render() { 
+    constructor(props){
+        super(props);
+        this.state = {
+            scrollTop: 0,
+            bgColor: "transparent"
+        }
+        this.navRef = React.createRef();
+        this.handleWindowScroll = this.handleWindowScroll.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.isToggled = false;
+    }
+    componentDidMount(){
+        let root = document.getElementById("root");
+        console.log(this.navRef.current.style.height);
+        root.addEventListener('scroll',this.handleWindowScroll);
+    }
+    handleWindowScroll(){
+        let currentScroll =document.getElementById("root").scrollTop;
+        if (currentScroll > this.navRef.current.style.height) this.setState({bgColor: "#581c0c"})
+        else if (this.state.bgColor != "transparent" && !(this.isToggled)) this.setState({bgColor: "transparent"});
+    }
+    handleClick(){
+        if (this.state.bgColor === "transparent") this.setState({bgColor: "#581c0c"});
+        this.isToggled = (this.isToggled) ? false:true;
+    }
+    render() {
+        const navRef = this.navRef; 
+        const bgColor = this.state.bgColor;
+    
         return (  
-            <Navbar expand="md" className="fixed-top">
+            <Navbar expand="md" className="fixed-top" ref={navRef} style={{background: bgColor}}>
                 <Container>
                 <Brand url="./style/homeWallpaper.jpg"/>
                 <Navbar.Brand href="#home">VLife</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle onClick={this.handleClick} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto w-100">
                     <Nav.Link href="#home">Home</Nav.Link>

@@ -2,15 +2,21 @@ html,body{
 	width: 100%;
 	height: 100%;
 }
-body{
-	background: #BC986A;
+#root{
+	height: 100%;
+	width: 100%;
+	background: url("mainintrobg.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
+	overflow: auto;
 }
 
 * {
 	font-family: 'PT Serif', serif;
 }
 nav {
-	background-color: #DAAD86;
+	transition: 0.5s;
+
 }
 .img-logo {
 	height: 50px;
@@ -18,13 +24,21 @@ nav {
 }
 .navbar-brand{
 	margin-right: 2rem !important;
+	color: #f9b384!important;
 }
-.navbar-nav a{
+.nav-link {
 	transition: 0.5s;
+	margin-right: 2rem;
+	color: #f9b384!important;
 }
-.navbar-nav a:hover{
+.nav-link:hover{
 	text-decoration-color: red;
 	color: red;
+}
+.navbar-light .navbar-toggler{
+	margin-right: 1rem;
+	color: red !important;
+	border-color: brown !important;
 }
 @media (max-width: 768px){
 	.nav-right{
@@ -45,9 +59,9 @@ nav {
 }
 @media (min-width: 768px){
 	.nav-right.last{
-		margin-left: 30px;
 		padding-left: 5px;
 		border-left: brown solid 2px;
+		margin-right: 0;
 	}
 	.nav-right {
 		margin-left: 20px;
@@ -59,49 +73,45 @@ nav {
 		justify-content: flex-end;
 
 	}
-	.row div h1{
+	#mainText div h1{
 		font-size: 5rem;
 		
 	}
-	.row div h3{
+	#mainText div h3{
 		font-size: 3rem;
 	}
 	.main{
 		height: 40%;
-		min-height: 400px;
-		max-height: 450px;
+		min-height: 500px;
+		max-height: 600px;
 	}
 
 }
 .main {
-	margin-top: 70px;
+	
 	background: url("homeWallpaper.jpg");
 	background-size: cover;
 	background-position: 50% 25%;
 	background-repeat: no-repeat;
 	width: 100%;
-	padding-top: 4.5rem;
+	padding-top: 5rem;
 	padding-bottom: 2rem;
 	text-align: center;
-	box-shadow: #8a4008 0px 5px 10px;
+	box-shadow: #8a4008 0px 5px 20px;
 }
-@media (max-width:960px ){
-	
-}
+
 .main.container{
 
 	position: absolute;
 
 
 }
-.row div h1,.row div h3{
+#mainText div h1,#mainText div h3{
 	color:#DAAD86;
 	
 }
-.row div h1{
+#mainText div h1{
 	margin: 0 auto 0 auto;
-	border-bottom: 2px #BC986A solid;
-	border-radius: 1px
 }
 #playButton {
 	background: #FBEEC1;
@@ -148,3 +158,53 @@ height: 100%;
 .navbar-toggler:focus{
 	outline: 0 !important;
 }
+.enter{
+	opacity: 0;
+	transition: opacity 1s, transform 1s, border-bottom 1s;
+	border-bottom: 0;
+}
+.enter-active{
+	opacity: 1;
+	transform: translateY(20px);
+	
+	transition: opacity 1s, transform 1s,border-bottom 1s;
+	
+}
+.enter-done{
+	transform: translateY(20px);
+	opacity: 1;
+	transition: opacity 1s, transform 1s, border-bottom 1s;
+}
+.enter div>div>div>hr{
+	border: 0;
+	width: 0;
+	transition: border 1s, width 1s;
+}
+.enter-active div>div>div>hr{
+	border: 1px solid brown;
+	width: 50%;
+	transition: border 1s, width 1s;
+}
+.enter-done div>div>div>hr {
+	border: 2px solid brown;
+	width: 100%;
+	transition: border 1s, width 1s;
+}
+
+
+#mainText div hr{
+	color: brown;
+	height: 0px;
+	margin: 0 auto 0 auto;
+	background: brown;
+}
+.intro div>span>p{
+	border-left: 2px solid brown;
+	padding-left: 1.5rem;
+}
+.intro div>img{
+	border-radius: 5px;
+	margin-bottom: 1rem;
+}
+
+
