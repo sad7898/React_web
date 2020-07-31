@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import Brand from "./Brand.jsx"
+import Brand from "./brand.jsx"
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Container } from 'react-bootstrap';
-
+import {
+    Link,
+  } from "react-router-dom";
 import $ from 'jquery';
 
 class Bar extends Component {
@@ -23,11 +25,11 @@ class Bar extends Component {
     }
     handleWindowScroll(){
         let currentScroll =document.getElementById("root").scrollTop;
-        if (currentScroll > this.navRef.current.style.height) this.setState({bgColor: "#581c0c"})
+        if (currentScroll > this.navRef.current.style.height) this.setState({bgColor: "#2a363b"})
         else if (this.state.bgColor != "transparent" && !(this.isToggled)) this.setState({bgColor: "transparent"});
     }
     handleClick(){
-        if (this.state.bgColor === "transparent") this.setState({bgColor: "#581c0c"});
+        if (this.state.bgColor === "transparent") this.setState({bgColor: "#2a363b"});
         this.isToggled = (this.isToggled) ? false:true;
     }
     render() {
@@ -38,18 +40,18 @@ class Bar extends Component {
             <Navbar expand="md" className="fixed-top" ref={navRef} style={{background: bgColor}}>
                 <Container>
                 <Brand url="./style/homeWallpaper.jpg"/>
-                <Navbar.Brand href="#home">VLife</Navbar.Brand>
+                <Link to="/"><Navbar.Brand>VLife</Navbar.Brand></Link>
                 <Navbar.Toggle onClick={this.handleClick} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto w-100">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>
-                    <Nav.Link href="#forum">Forum</Nav.Link>
-                    <span className="wrap-up">
-                        <Nav.Link className="nav-right" href="#contact">Contact</Nav.Link>
-                        <Nav.Link className="nav-right" href="#about">About</Nav.Link>
-                        <Nav.Link className="nav-right last" href="#signup">Sign Up</Nav.Link>
-                    </span>
+                        <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/link" className="nav-link">Link</Link>
+                        <Link to="/forum" className="nav-link">Forum</Link>
+                        <span className="wrap-up">
+                            <Link className="nav-link nav-right" to="/contact">Contact</Link>
+                            <Link className="nav-link nav-right" to="/about">About</Link>
+                            <Link className="nav-link nav-right last" to="/signup">Sign Up</Link>
+                        </span>
                     </Nav>
                 </Navbar.Collapse>
                 </Container>

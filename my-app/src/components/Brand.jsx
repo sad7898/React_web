@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logo from "./style/logoSample.png"
-import Nav from './Nav.jsx'
+import Nav from './nav.jsx'
+import {Link} from 'react-router-dom';
 class Brand extends Component {
     constructor(props){
         super(props);
@@ -33,7 +34,7 @@ class Brand extends Component {
         const divRef = this.divRef;
         return (
                     <div className="logo mr-4" ref={divRef}>
-                        <img src={Logo} className="img-fluid img-logo pl-3"></img>
+                        <Link to="/"><img src={Logo} className="img-fluid img-logo pl-3"></img></Link>
                     </div>
                 
             );
