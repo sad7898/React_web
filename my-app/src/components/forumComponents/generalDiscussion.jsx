@@ -2,30 +2,6 @@ import React, { Component, useEffect,useState} from 'react';
 import {Container,Row,Column,Button} from 'react-bootstrap'
 import {Link,Switch,Route,useParams,useRouteMatch} from 'react-router-dom'
 import PostLink from './postLink.jsx'
-
-// class GeneralDiss extends Component {
-//     constructor(props){
-//         super(props);
-    
-//     }
-//     render() { 
-       
-       
-//         return (
-//             <Container className="forumWrapper">
-//                 <div className="header-1 d-flex flex-row justify-content-between">
-//                     <span>General Discussion</span>
-//                     <Button variant="primary"><Link to="/forum/general/createPost">Create post</Link></Button>
-//                 </div>
-//                 <ul>
-//                     <PostLink topic="Hey"/>
-//                 </ul>
-//             </Container>
-            
-//           );
-//     }
-// }
-
 const GeneralDiss = function(props){
     const [list,setList] = useState();
     
@@ -51,9 +27,9 @@ const GeneralDiss = function(props){
                     </Route>
                     <Route path={path+"/new"}>
                         <form action="/post" method="POST">
-                            <label for="postTopic">Topic</label>
+                            <label htmlFor="postTopic">Topic</label>
                             <input type="text" name="postTopic"></input>
-                            <label for="postText">Text</label>
+                            <label htmlFor="postText">Text</label>
                             <input type="text" name="postText"></input>
                             <button>Submit</button>
                         </form>

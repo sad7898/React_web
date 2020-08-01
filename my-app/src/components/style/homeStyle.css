@@ -8,7 +8,7 @@ html,body{
 	/* background: url("mainintrobg.jpg");
 	background-repeat: no-repeat;
 	background-size:cover; */
-	background: #fecea8;
+	background: #4d4545;
 	overflow: auto;
 }
 
@@ -51,9 +51,8 @@ nav {
 		border-bottom: 1px solid brown;
 	}
 	.main{
-		max-height: 500px;
-	}
-	.main{
+		padding-top: 5rem;
+		padding-bottom: 2rem;
 		min-height: 300px;
 		max-height: 400px;
 	}
@@ -71,14 +70,16 @@ nav {
 		justify-content: flex-end;
 
 	}
-	#mainText div h1{
+	#mainText  h1{
 		font-size: 5rem;
 		
 	}
-	#mainText div h3{
+	#mainText  h3{
 		font-size: 3rem;
 	}
 	.main{
+		padding-top: 7rem;
+		padding-bottom: 2rem;
 		height: 40%;
 		min-height: 500px;
 		max-height: 600px;
@@ -92,10 +93,10 @@ nav {
 	background-position: 50% 25%;
 	background-repeat: no-repeat;
 	width: 100%;
-	padding-top: 5rem;
-	padding-bottom: 2rem;
 	text-align: center;
-	box-shadow: #8a4008 0px 5px 20px;
+}
+.home {
+	
 }
 
 .main.container{
@@ -104,11 +105,11 @@ nav {
 
 
 }
-#mainText div h1,#mainText div h3{
-	color:#DAAD86;
+#mainText  h1,#mainText  h3{
+	color:#ff5f40;
 	
 }
-#mainText div h1{
+#mainText  h1{
 	margin: 0 auto 0 auto;
 }
 #playButton {
@@ -147,7 +148,7 @@ section {
 	width: 25px;
 	height: 25px;
 	border-radius: 25px;
-	background: #DAAD86;
+	background: #8d6262;
 }
 #root {
 width: 100%;
@@ -190,7 +191,7 @@ height: 100%;
 }
 
 
-#mainText div hr{
+#mainText hr{
 	color: brown;
 	height: 0px;
 	margin: 0 auto 0 auto;
@@ -242,8 +243,7 @@ height: 100%;
 .header-2 li:nth-of-type(2n){
 	background:#f1d1d1;
 }
-.forumWrapper{
-	margin-top: 70px;
-	padding-top: 2rem;
+.forumHead{
+	padding-top: 50px;
+	padding-bottom: 1rem;
 }
-

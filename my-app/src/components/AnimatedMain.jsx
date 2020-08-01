@@ -15,34 +15,15 @@ class AnimatedRow extends Component {
     render() { 
         const inProp = this.state.inProp;
         return (
-            // <CSSTransition in={inProp} className="boi-" timeout={500}>
-            //         <Container>
-            //             <Row>
-            //                 <Col xl={12}>
-            //                     <div className="mb-">
-            //                         <h1>VIRTUAL LIFE</h1>
-            //                         <hr id="test"></hr>
-            //                         <h3>New beginning</h3>
-            //                     </div>
-            //                 </Col>
-            //             </Row>
-            //         </Container>
-            // </CSSTransition>
             <CSSTransition in={inProp} timeout={500}>
-                    <span>
                         <Container>
                             <Row>
-                                <Col xl={12} id="mainText">
-                                    <div>
-                                        <h1>VIRTUAL LIFE</h1>
-                                        <hr></hr>
-                                        <h3>New beginning</h3>
-                                    </div>
+                                <Col xl={12}>
+                                    {this.props.children}
                                 </Col>
                             </Row>
                         </Container>
-                    </span>
-                </CSSTransition>
+            </CSSTransition>
           );
     }
 }

@@ -28,7 +28,7 @@ const PostLink = (props) => {
     const [tag,setTag] =  useState(null);
     const [id,setID] = useState(props.id);
     return (  
-                <Link to={path+"/"+topic+"/"+id}>{topic}</Link>
+                <Link to={path+"/"+id+"/"+topic}>{topic}</Link>
     );
 }
  

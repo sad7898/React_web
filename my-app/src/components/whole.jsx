@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import Bar from './nav.jsx';
 import Home from './homeBundle.jsx'
 import {BrowserRouter,Switch,Route} from 'react-router-dom';
-import Forum from './forumBundle.jsx';
-import GeneralDiss from './generalDiss.jsx'
-import CreatePost from './createPostForm.jsx';
+import Forum from './forumComponents/forumBundle.jsx';
+
 // class Whole extends Component {
 //     componentDidMount(){
 //         var loadScreen = document.querySelector(".still-load");

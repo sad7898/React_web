@@ -20,6 +20,8 @@ app.get("/api/post",function(req,res){
     else res.send(post.map((val)=> ({topic: val.topic, id: val._id})));
   });
 })
+
+
 app.post('/post', function (req, res) {
   let Topic = req.body.postTopic+"";
   let newPost = new postCollection({

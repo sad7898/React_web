@@ -16,22 +16,14 @@ class Main extends Component {
     render() { 
         const inProp = this.state.mainIn;
         return (  
-            <Container fluid className="main d-flex flex-column justify-content-between">
-                <CSSTransition in={inProp} timeout={500}>
-                    <span>
-                        <Container>
-                            <Row>
-                                <Col xl={12} id="mainText">
-                                    <div>
-                                        <h1>VIRTUAL LIFE</h1>
-                                        <hr></hr>
-                                        <h3>New beginning</h3>
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </span>
-                </CSSTransition>
+            <Container fluid className="main home d-flex flex-column justify-content-between">
+                <AnimatedRow>
+                    <div id="mainText">
+                        <h1>VIRTUAL LIFE</h1>
+                        <hr></hr>
+                        <h3>New beginning</h3>
+                    </div>
+                </AnimatedRow>
                 <Container>
                     <Row>
                         <Col xl={12}>

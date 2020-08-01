@@ -25,11 +25,11 @@ class Bar extends Component {
     }
     handleWindowScroll(){
         let currentScroll =document.getElementById("root").scrollTop;
-        if (currentScroll > this.navRef.current.style.height) this.setState({bgColor: "#2a363b"})
+        if (currentScroll > this.navRef.current.style.height) this.setState({bgColor: "#8d6262"})
         else if (this.state.bgColor != "transparent" && !(this.isToggled)) this.setState({bgColor: "transparent"});
     }
     handleClick(){
-        if (this.state.bgColor === "transparent") this.setState({bgColor: "#2a363b"});
+        if (this.state.bgColor === "transparent") this.setState({bgColor: "#8d6262"});
         this.isToggled = (this.isToggled) ? false:true;
     }
     render() {

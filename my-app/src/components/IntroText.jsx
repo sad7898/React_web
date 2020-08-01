@@ -24,8 +24,8 @@ class Intro extends Component {
                     </Col>
                     <Col xl={8} className={textOn+" d-flex flex-column justify-content-start"}>
                         <span className="d-flex flex-column align-items-start">
-                            <h1>{Head}</h1>
-                            <p>{this.props.children}</p>
+                            <h1 style={{color: "#ed8d8d"}}>{Head}</h1>
+                            <p style={{color: "#ed8d8d"}}>{this.props.children}</p>
                         </span>
                     </Col>
                 </Row>
