@@ -16,20 +16,22 @@ class Intro extends Component {
         let textDirection = this.state.textDirection;
         const imgDir = (textDirection==="right") ? "order-0" : "order-1";
         const textOn = (textDirection==="right") ? "order-1" : "order-0";
-        return (  
-            <Container className="h-100" id="#mainIntro">
-                <Row className="px-2 pb-2 pt-5 d-flex flex-row intro">
-                    <Col xl={4} className={imgDir+" d-flex flex-column justify-content-center"}>
-                        <img src={Image} className="img-fluid"></img>
-                    </Col>
-                    <Col xl={8} className={textOn+" d-flex flex-column justify-content-start"}>
-                        <span className="d-flex flex-column align-items-start">
-                            <h1 style={{color: "#ed8d8d"}}>{Head}</h1>
-                            <p style={{color: "#ed8d8d"}}>{this.props.children}</p>
-                        </span>
-                    </Col>
-                </Row>
-            </Container>
+        return ( 
+            <div className="h-100" id="introText">
+                <Container className="h-100">
+                    <Row className="px-2 pb-2 pt-4 d-flex flex-row intro">
+                        <Col xl={4} className={imgDir+" d-flex flex-column justify-content-center"}>
+                            <img src={Image} className="img-fluid"></img>
+                        </Col>
+                        <Col xl={8} className={textOn+" d-flex flex-column justify-content-start"}>
+                            <span className="d-flex flex-column align-items-start">
+                                <h1 style={{color: "#ec823a"}}>{Head}</h1>
+                                <p style={{color: "#ec823a"}}>{this.props.children}</p>
+                            </span>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         );
     }
 }

@@ -1,0 +1,49 @@
+.header-1{
+	padding: 1rem 1rem 1rem 1rem;
+	font-size: 2rem;
+	background: #f1d1d1;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	color: #ca5116;
+	border: 2px brown solid;
+}
+.header-2{
+	font-size: 1.5rem;
+	list-style: none;
+	padding-left: 0;
+	
+}
+.header-2 li{
+	padding: 1rem 0 1rem 2rem;
+}
+.header-2 li a {
+	text-decoration-line: none;
+	color: brown;
+	transition: 0.5s;
+}
+.header-2 li p{
+	margin-bottom: 0;
+	font-size: 1rem;
+	color: grey
+}
+.header-2 li a:hover{
+	color: darkolivegreen;
+}
+.header-2 li:nth-of-type(2n+1){
+	background:#ffdecf;
+}
+.header-2 li:nth-of-type(2n){
+	background:#f1d1d1;
+}
+.forumHead{
+	padding-top: 60px;
+	padding-bottom: 1rem;
+}
+#smaller-main{
+	background: url("manHoldBook.jpg");
+	background-position: center;
+	height: 25%;
+	max-height: 200px;
+	padding-bottom: 0;
+
+}

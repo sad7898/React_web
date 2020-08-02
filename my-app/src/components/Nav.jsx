@@ -47,7 +47,7 @@ class Bar extends Component {
                         <Link to="/" className="nav-link">Home</Link>
                         <Link to="/link" className="nav-link">Link</Link>
                         <Link to="/forum" className="nav-link">Forum</Link>
-                        <span className="wrap-up">
+                        <span className="link-wrap-up">
                             <Link className="nav-link nav-right" to="/contact">Contact</Link>
                             <Link className="nav-link nav-right" to="/about">About</Link>
                             <Link className="nav-link nav-right last" to="/signup">Sign Up</Link>
