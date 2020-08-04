@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from "./style/logoSample.png"
-import Nav from './nav.jsx'
+import Nav from './Nav.jsx'
 import {Link} from 'react-router-dom';
 class Brand extends Component {
     constructor(props){

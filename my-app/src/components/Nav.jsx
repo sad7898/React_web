@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Brand from "./brand.jsx"
+import Brand from "./Brand.jsx"
 import { Navbar,Nav,NavDropdown,Form,FormControl,Button, Container } from 'react-bootstrap';
 import {
     Link,

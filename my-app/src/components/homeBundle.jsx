@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Main from './mainIntro.jsx';
-import Intro from './introText';
-import './style/uniStyle.scss';
+import Intro from './introText.jsx';
+import './style/uniStyle.css';
 class Home extends Component {
     
     render() { 
