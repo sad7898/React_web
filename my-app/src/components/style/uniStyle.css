@@ -12,6 +12,7 @@ html, body {
 }
 * {
 	font-family: 'PT Serif', serif;
+	z-index: 100;
 }
 nav {
 	transition: 0.5s;
@@ -101,4 +102,8 @@ nav {
 	max-width: 1000px;
 	width: 100%;
 	transition: border 1s, width 2s;
+}
+.input-group-text{
+	background :#fbc687;
+	border-color: #fbc687;
 }

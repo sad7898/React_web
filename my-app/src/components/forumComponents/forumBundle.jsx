@@ -1,57 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component, useState,useEffect} from 'react';
 import {Container,Col,Row,Form,FormControl,Button,Breadcrumb} from 'react-bootstrap';
-import MainTopic from './mainTopic.jsx'
+import MainTopic from './mainTopic.jsx';
 import {Link, useRouteMatch,Switch,Route,useParams} from 'react-router-dom';
 import GeneralDiss from './generalDiscussion.jsx';
 import AnimatedRow from '../animatedMain.jsx';
-import {ReactComponent as SearchIcon}  from '../style/SearchIcon.svg';
+import ForumMain from './forumMain.jsx';
+import Trending from './trendingTable.jsx'
 const Forum = function(props){
+    useEffect(() => {
+            document.getElementById('root').style.backgroundColor = "#ccafaf";
+            return () => {document.getElementById('root').style.backgroundColor ="#4d4545"}
+        },[]);
         let {parentURL, path} = useRouteMatch();
+        let {query} = useParams();
         
         return (
             <>
-           <Container fluid className="forumHead d-flex flex-row align-items-end px-0" id="smaller-main">
-               <div className="w-100" style={{backgroundColor: "rgba(133,99,71,0.5)"}}>
-                   <Container className="d-flex flex-row justify-content-between align-items-center py-1">
-                            <div className="d-flex flex-row align-items-center">
-                                <h1 style={{color: "#FBEEC1"}}>Forums</h1>
-                                <span className="pl-2"><button>search</button></span>
-                            </div>
-                            <Breadcrumb className="forumNav">
-                                    <Breadcrumb.Item linkAs="span"><Link to={path}>Index</Link></Breadcrumb.Item>
-                                    <Breadcrumb.Item linkAs="span"><Link to={path+"/GeneralDiss/post"}>Discussion</Link></Breadcrumb.Item>
-                            </Breadcrumb>
-                        <Form inline className="search-bar">
-                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                            <Button variant="search">Search</Button>
-                        </Form>
-                    </Container>
-                </div>
-            </Container>
-            <Container fluid className="px-0">
-                <div className="hidden-search">
-                    <Form inline>
-                                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                                <Button variant="search">Search</Button>
-                    </Form>
-                </div>
-            </Container>
-            <Container className="forumWrapper h-100">
-                <Switch>
-                    <Route exact path={path}>
-                        <Row>
-                            <Col xl={8}>
+                <ForumMain/>
+                <Container className="forumWrapper h-100">
+                    <Switch>
+                        <Route path={path+"/GeneralDiss/post"}>
+                            <GeneralDiss/>
+                        </Route>
+                        <Route path={path+"/search"}>
+                            <h1>hello</h1>
+                        </Route>
+                        <Route exact path={path}>
+                            <Row style={{marginTop: "80px"}}>
                                 
-                            </Col>
-                        </Row>
-                    </Route>
-                    <Route path={path+"/GeneralDiss/post"}>
-                        <GeneralDiss/>
-                    </Route>
-                </Switch>
-            </Container>
+                                <Col md={9} className="d-flex flex-row justify-content-around">
+                                    <Trending></Trending>
+                                </Col>
+                                
+                            </Row>
+                        </Route>
+                    </Switch>
+                </Container>
+          
             </>
-            
           );
     
 }

@@ -2,9 +2,9 @@ import React, { Component, useEffect,useState} from 'react';
 import {Container,Row,Column,Button} from 'react-bootstrap'
 import {Link,Switch,Route,useParams,useRouteMatch} from 'react-router-dom'
 import PostLink from './postLink.jsx'
+import PostForm from './postForm.jsx';
 const GeneralDiss = function(props){
     const [list,setList] = useState();
-    
     useEffect(function(){
         fetch("/api/post")
         .then((obj) => (obj.json()))
@@ -17,7 +17,7 @@ const GeneralDiss = function(props){
         <>
                  <div className="header-1 d-flex flex-row justify-content-between">
                      <span>General Discussion</span>
-                     <Button variant="primary"><Link to={url+"/new"}>Create post</Link></Button>
+                     {/* <Button variant="primary"><Link to={url+"/new"}>Create post</Link></Button> */}
                  </div>
                  <Switch>
                     <Route exact path={path}>
@@ -26,13 +26,14 @@ const GeneralDiss = function(props){
                         </ul>
                     </Route>
                     <Route path={path+"/new"}>
-                        <form action="/post" method="POST">
+                        {/* <form action="/post" method="POST">
                             <label htmlFor="postTopic">Topic</label>
                             <input type="text" name="postTopic"></input>
                             <label htmlFor="postText">Text</label>
                             <input type="text" name="postText"></input>
                             <button>Submit</button>
-                        </form>
+                        </form> */}
+                        <PostForm></PostForm>
                         
                     </Route>
                 </Switch>
