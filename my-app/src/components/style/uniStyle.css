@@ -1,5 +1,6 @@
 @import "./forumStyle.css";
 @import "./homeStyle.css";
+@import "./loginStyle.css";
 html, body {
 	width: 100%;
 	height: 100%;
@@ -51,6 +52,9 @@ nav {
 	}
 }
 @media (min-width: 768px){
+	.nav-right{
+		margin-right: 0.25rem;
+	}
 	.nav-right.last{
 		padding-left: 5px;
 		border-left: brown solid 2px;

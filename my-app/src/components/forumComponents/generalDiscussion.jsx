@@ -16,8 +16,12 @@ const GeneralDiss = function(props){
     return (
         <>
                  <div className="header-1 d-flex flex-row justify-content-between">
-                     <span>General Discussion</span>
-                     {/* <Button variant="primary"><Link to={url+"/new"}>Create post</Link></Button> */}
+                     <span>
+                         <Link to={path}>General Discussion</Link>
+                    </span>
+                    <span>
+                        create post
+                    </span>
                  </div>
                  <Switch>
                     <Route exact path={path}>
@@ -26,15 +30,7 @@ const GeneralDiss = function(props){
                         </ul>
                     </Route>
                     <Route path={path+"/new"}>
-                        {/* <form action="/post" method="POST">
-                            <label htmlFor="postTopic">Topic</label>
-                            <input type="text" name="postTopic"></input>
-                            <label htmlFor="postText">Text</label>
-                            <input type="text" name="postText"></input>
-                            <button>Submit</button>
-                        </form> */}
                         <PostForm></PostForm>
-                        
                     </Route>
                 </Switch>
         </>
