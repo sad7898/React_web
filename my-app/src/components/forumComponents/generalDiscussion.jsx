@@ -3,13 +3,14 @@ import {Container,Row,Column,Button} from 'react-bootstrap'
 import {Link,Switch,Route,useParams,useRouteMatch} from 'react-router-dom'
 import PostLink from './postLink.jsx'
 import PostForm from './postForm.jsx';
+import axios from 'axios';
 const GeneralDiss = function(props){
     const [list,setList] = useState();
     useEffect(function(){
-        fetch("/api/post")
-        .then((obj) => (obj.json()))
-        .then((data) => (setList(data.map((val) => (<li key={val.id}><PostLink topic={val.topic} id={val.id}>{val.topic}</PostLink></li>)))))
-        .catch((err) => (console.log(err)));
+        axios.get("/api/post")
+        .then((res) => (res.data))
+        .then(data => (setList(data.map((val) => (<li key={val.id}><PostLink topic={val.topic} id={val.id} by={val.author} userId={val.userId}></PostLink></li>)))))
+        .catch((err) => (console.log(err)))
     },[])
     let {postID,postTopic} =  useParams();
     let {path,url} = useRouteMatch();
@@ -20,14 +21,18 @@ const GeneralDiss = function(props){
                          <Link to={path}>General Discussion</Link>
                     </span>
                     <span>
-                        create post
+                        <Button variant="outline-warning"><Link to={`${path}/new`}>+</Link></Button>
                     </span>
                  </div>
                  <Switch>
                     <Route exact path={path}>
+                        
                         <ul id="postList">
-                            {list}
+                            <Container fluid>
+                                {list}
+                            </Container>
                         </ul>
+                        
                     </Route>
                     <Route path={path+"/new"}>
                         <PostForm></PostForm>

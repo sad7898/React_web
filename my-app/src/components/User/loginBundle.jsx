@@ -11,9 +11,7 @@ const Login = (props) => {
     let history = useHistory();
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
-    useEffect(() => {
-        
-    },[user,password])
+  
     const onChangeUser = (e) => {
         setUser(e.target.value);
     }

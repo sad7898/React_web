@@ -1,34 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import {Link,Route,useRouteMatch} from 'react-router-dom';
 import {v4 as uuidv4,v5 as uuidv5} from 'uuid';
+import {Container,Row,Col} from 'react-bootstrap';
 
-// class Post extends Component {
-//    constructor(props){
-//        super(props);
-//        this.state = {
-//            topic : props.topic,
-//            poster : props.poster,
-//            comment: props.comment,
-//            tag: props.tag
-//        }
-//        this.id = uuidv5(this.state.topic,uuidv4());
-//    }
-//     render() { 
-//         const topic = this.state.topic;
-//         let postKey = topic
-//         return (
-//            <li key={this.id}><Link to={"/forum/general/"+this.id}>{topic}</Link></li>
-//           );
-//     }
-// }
+
 const PostLink = (props) => {
     let {path,url} = useRouteMatch();
     const [topic,setTopic] = useState(props.topic);
-    const [poster,setPoster] = useState(props.poster);
+    const [poster,setPoster] = useState(props.by);
     const [tag,setTag] =  useState(null);
     const [id,setID] = useState(props.id);
-    return (  
-                <Link to={path+"/"+id+"/"+topic}>{topic}</Link>
+    const [userId,setUserId] = useState(props.userId);
+    useEffect(()=>{
+        console.log(topic);
+    },[])
+    return ( 
+            <Row className="">
+                <Col>
+                    <Link to={path+"/"+id+"/"+topic}>{topic}</Link>
+                </Col>
+                <Col className="d-flex flex-row justify-content-end">
+                    by <Link to={`/user/${userId}`}>{poster}</Link>
+                </Col>
+            </Row>
+        
     );
 }
  

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Switch,Route,Link,useHistory} from 'react-router-dom';
 import {Form,Button,Container} from 'react-bootstrap';
+import {useSelector} from 'react-redux';
 import axios from 'axios';
 const SignUp = (props) => {
     let [user,setUser] = useState('');
@@ -8,6 +9,7 @@ const SignUp = (props) => {
     let [email,setEmail] = useState('');
     let [error,setError] = useState();
     let history = useHistory();
+    let auth = useSelector(state => state.auth)
     const onChangeUser = (e) => {
         setUser(e.target.value);
     }

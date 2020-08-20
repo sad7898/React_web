@@ -8,19 +8,20 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'build')));
 const mongoose = require('mongoose')
-const key = require('./key.js');
+const key = require('./server/key.js');
 mongoose.connect(key.mongoURI);
-const Post = require('./model/post.js');
-const User = require('./model/user.js'); 
-const inputValidator = require('./register.js');
+const Post = require('./server/model/post.js');
+const User = require('./server/model/user.js'); 
+const inputValidator = require('./server/register.js');
 const { ExtractJwt } = require('passport-jwt');
 const passport = require('passport');
 const jwt = require("jsonwebtoken");
+const { decode } = require('punycode');
 let errorMessage={};
 app.use(cookieParser());
 app.use(passport.initialize());
-require('./passportConfig.js')(passport);
-app.get("/api/post/:q",function(req,res){
+require('./server/passportConfig.js')(passport);
+app.get("/post/:q",function(req,res){
   let query = req.params.q;
   console.log(query);
   let result;
@@ -33,41 +34,46 @@ app.get("/api/post/:q",function(req,res){
     else query = post.map((val)=> ({topic: val.topic, id: val._id,created: val.created}));
   })
 })
-app.get("/api/post/",function(req,res){
-  Post.find({},function(err,post){
+app.get("/api/post",function(req,res){
+  const postList = Post.find({}).populate({path: 'author',option: {lean: true}}).lean();
+  postList.exec(function(err,post){
     if(err) console.log(err)
     else {
-      console.log(post);
-      res.send(post.map((val)=> ({topic: val.topic, id: val._id,created: val.created})))
+      res.send(post.map((val)=> ({topic: val.topic, id: val._id,created: val.created,author: val.author.user, userId: val.author._id})))
     };
-  });
+  })
+ 
 })
 app.post('/post', function (req, res){
-  User.findOne({user: "admin"}, (err,userFound) => {
-    if (err) console.log(err);
-    else{
-    let newPost = new Post({
-      topic: req.body.postTopic+"",
-      text: req.body.postText,
-      author: userFound._id
-    })
-    console.log(userFound);
-    newPost.save((err,postSaved) => {
-      if(err) console.log(err);
-      else {
-        console.log(postSaved);
-        userFound.post.push(postSaved);
-        userFound.save((err,userSavedPost) => {
-          if (err) console.log(err);
-          else console.log(userSavedPost);
+  jwt.verify(req.cookies.token,key.secretOrKey,(err,decodedToken) => {
+    if (err) res.status(400).json(err)
+    else {
+        User.findOne({user: decodedToken.user}, (err,userFound) => {
+          if (err) {res.status(404).json({error:"user not found"})}
+          else{
+            let newPost = new Post({
+              topic: req.body.postTopic+"",
+              text: req.body.postText,
+              author: userFound._id
+          })
+          newPost.save((err,postSaved) => {
+            if(err) res.status(404).json({error: "cannot save post"})
+            else {
+              console.log(postSaved);
+              userFound.post.push(postSaved);
+              userFound.save((err,userSavedPost) => {
+                if (err) res.status(404).json({error: "something's wrong"});
+          
+              })
+              res.redirect("/forum/GeneralDiss/post");
+              
+            }
+          })
+        }
         })
-        res.redirect("/forum/GeneralDiss/post");
-        
-      }
-    })
-  }
-  })
-});
+      }  
+})
+})
 app.post("/user/signup",function(req,res){
     let newUser = new User({
       user: req.body.user,
@@ -80,13 +86,13 @@ app.post("/user/signup",function(req,res){
       if (err) console.log(err);
       else if (found){
         errorMessage.userDup = "This username is already taken.";
-        res.status(404).json(errorMessage);
+        res.status(400).json(errorMessage);
       }
       else User.findOne({email: newUser.email}, (err,found) => {
         if (err) console.log(err);
         else if (found){
           errorMessage.emailDup = "This email is already taken.";
-          res.status(404).json(errorMessage);
+          res.status(400).json(errorMessage);
         }
         else {
           bcrypt.genSalt(10, (err,salt) => {
@@ -100,7 +106,7 @@ app.post("/user/signup",function(req,res){
                     console.log(userSaved);
                     res.redirect("/");
                   }
-                  else res.status(404).json(errorMessage);
+                  else res.status(400).json(errorMessage);
                 })
               }
             })
@@ -110,7 +116,7 @@ app.post("/user/signup",function(req,res){
     })
   }
   else {
-    res.json(validateToken.error);
+    res.status(400).json(validateToken.error);
   } 
   })
 
@@ -163,6 +169,7 @@ app.post("/user/signup",function(req,res){
 
 
 app.get('*', function (req, res) {
+  
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
