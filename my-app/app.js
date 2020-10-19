@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const path = require('path');
 const app = express();
 const uuid = require('uuid');
+const hello = 'hello'
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'build')));
 const mongoose = require('mongoose')
