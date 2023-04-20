@@ -10,7 +10,7 @@
     "babel-preset-react-app": "^3.1.2",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
-    "mongoose": "^5.9.26",
+    "mongoose": "^5.13.15",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
